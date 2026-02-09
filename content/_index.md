@@ -1,5 +1,5 @@
 ---
-title: "Borg Grech"
+title: "Edward Borg Grech"
 description: "Builder-operator writing about accountable work redesign in the AI era."
 ---
 
