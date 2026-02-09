@@ -30,7 +30,7 @@ description: "Productization isn’t just building. It’s refusing custom work 
 
 
 
-## Services is the fastest way to learn—if you extract the signal
+## Services is the fastest way to learn, if you extract the signal
 
 
 
