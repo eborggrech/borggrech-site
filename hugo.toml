@@ -1,10 +1,10 @@
 baseURL = "https://borggrech.com/"
 languageCode = "en-us"
-title = "Borg Grech"
+title = "Edward Borg Grech"
 theme = "PaperMod"
 
 [params]
-  author = "Borg Grech"
+  author = "Edward Borg Grech"
   ShowReadingTime = true
   ShowShareButtons = true
 
