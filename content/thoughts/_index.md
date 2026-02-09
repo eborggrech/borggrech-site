@@ -1,6 +1,10 @@
 ---
 title: "Thoughts"
 description: "Short essays on AI-era work design: accountability, governance, and practical execution."
+cascade:
+  showReadingTime: true
+  showWordCount: false
+  showToc: false
 ---
 
 I write short essays and working notes on building and operating through the AI transition. The thread is practical: redesigning work, keeping accountability intact, and building governance that scales without bureaucratic drag. Expect clear language, real examples, and the occasional template.
