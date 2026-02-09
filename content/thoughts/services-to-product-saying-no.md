@@ -16,7 +16,7 @@ description: "Productization isn’t just building. It’s refusing custom work 
 
 
 
-- Services teaches you what customers actually pay for—if you listen
+- Services teaches you what customers actually pay for, if you listen
 
 - The trap: custom work that looks like product progress
 
