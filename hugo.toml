@@ -7,6 +7,30 @@ theme = "PaperMod"
   author = "Edward Borg Grech"
   ShowReadingTime = true
   ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = false
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  comments = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = false
+  tocopen = false
+  mainSections = []
+
+[fuseOpts]
+  isCaseSensitive = false
+  shouldSort = true
+  location = 0
+  distance = 1000
+  threshold = 0.4
+  minMatchCharLength = 0
+  limit = 10 # refer: https://www.fusejs.io/api/methods.html#search
+  keys = ["title", "permalink", "summary", "content"]
 
 [menu]
   [[menu.main]]
@@ -18,3 +42,11 @@ theme = "PaperMod"
     name = "Thoughts"
     url = "/thoughts/"
     weight = 2
+
+  [[menu.main]]
+    name = "Search"
+    url = "/search/"
+    weight = 3
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

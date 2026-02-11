@@ -1,6 +1,7 @@
 ---
 title: "Edward Borg Grech"
 description: "Builder-operator writing about accountable work redesign in the AI era."
+layout: "page"
 ---
 
 ![Borg Grech](/images/headshot.jpg)
