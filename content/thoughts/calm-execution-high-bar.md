@@ -2,7 +2,7 @@
 title: "Calm Execution: Building a High Bar Without the Drama"
 date: 2026-02-18
 draft: false
-description: "High standards don’t require fear. Calm execution is clarity, ownership, and feedback—without theatrics."
+description: "High standards don’t require fear. Calm execution is clarity, ownership, and feedback without theatrics."
 ---
 
 ## Outline
