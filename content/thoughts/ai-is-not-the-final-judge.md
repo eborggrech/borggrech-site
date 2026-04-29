@@ -1,7 +1,7 @@
 ---
 title: "AI Is Not the Final Judge"
 date: 2026-04-28
-draft: true
+draft: false
 description: "AI becomes dangerous when weak context produces confident answers—and people mistake that confidence for truth."
 ---
 
