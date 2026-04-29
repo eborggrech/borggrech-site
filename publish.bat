@@ -4,34 +4,53 @@ echo Publishing borggrech.com
 echo =========================================
 echo.
 
-REM Change this path if your site lives elsewhere
-cd /d C:\Sites\borggrech-site
+REM Move to the folder where this batch file lives
+cd /d "%~dp0" || (
+    echo Could not change to the site folder.
+    pause
+    exit /b 1
+)
 
-REM Check git status
-echo Checking status...
-git status
+echo Current folder:
+cd
 echo.
 
-REM Ask for commit message
+echo Checking status...
+git status || (
+    echo Git status failed.
+    pause
+    exit /b 1
+)
+echo.
+
 set /p msg=Enter commit message: 
 
 if "%msg%"=="" (
     echo Commit message cannot be empty.
     pause
-    exit /b
+    exit /b 1
 )
 
-REM Stage all changes
 echo Staging changes...
-git add .
+git add . || (
+    echo Git add failed.
+    pause
+    exit /b 1
+)
 
-REM Commit
 echo Committing...
-git commit -m "%msg%"
+git commit -m "%msg%" || (
+    echo Git commit failed. Nothing was pushed.
+    pause
+    exit /b 1
+)
 
-REM Push to GitHub
 echo Pushing to GitHub...
-git push
+git push || (
+    echo Git push failed.
+    pause
+    exit /b 1
+)
 
 echo.
 echo =========================================
