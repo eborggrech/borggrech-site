@@ -2,7 +2,7 @@
 title: "AI Is Not the Final Judge"
 date: 2026-04-28
 draft: false
-description: "AI becomes dangerous when weak context produces confident answers—and people mistake that confidence for truth."
+description: "AI becomes dangerous when weak context produces confident answers and people mistake that confidence for truth."
 ---
 
 ## Outline
@@ -83,7 +83,7 @@ A very powerful one.
 
 But still an instrument.
 
-It can help structure arguments, surface patterns, pressure-test ideas, explain unfamiliar concepts, and compare options. It can accelerate thinking.
+It can help structure arguments, surface patterns, pressure test ideas, explain unfamiliar concepts, and compare options. It can accelerate thinking.
 
 But it cannot carry responsibility for your judgment.
 
@@ -132,7 +132,7 @@ In knowing how to test it.
 
 Imagine two people debating a business decision.
 
-One believes the company should automate a customer-facing workflow immediately.
+One believes the company should automate a customer facing workflow immediately.
 
 The other believes automation should be introduced more carefully, with review points and escalation paths.
 
@@ -146,7 +146,7 @@ The AI gives a strong answer about productivity, speed, cost reduction, and scal
 
 The second person asks:
 
-“What are the risks of automating this customer-facing process without enough governance?”
+“What are the risks of automating this customer facing process without enough governance?”
 
 The AI gives a strong answer about quality drift, trust loss, bad data, and unclear accountability.
 
