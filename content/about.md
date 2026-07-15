@@ -55,3 +55,4 @@ I write here to make my thinking more precise and to find people working serious
 {{< cta >}}
 [Read my writing](/thoughts/) · [What I’m focused on now](/now/) · [Email](mailto:edward@borggrech.com) · [LinkedIn](https://www.linkedin.com/in/eborggrech/)
 {{< /cta >}}
+

@@ -41,3 +41,4 @@ The aim is not to publish constantly. It is to publish when I have something wor
 {{< cta >}}
 [Read the latest writing](/thoughts/) · [About me](/about/) · [Email](mailto:edward@borggrech.com)
 {{< /cta >}}
+
