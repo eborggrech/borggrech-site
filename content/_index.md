@@ -1,77 +1,79 @@
 ---
 title: "Edward Borg Grech"
-description: "Builder-operator writing about accountable work redesign in the AI era."
+description: "Founder, operator and technologist building durable technology businesses and exploring how AI changes organisations, institutions and human agency."
 layout: "page"
 ---
 
 ![Borg Grech](/images/headshot.jpg)
 
-**Work redesign for the AI era.**
+## Building durable technology businesses and thinking through what happens when intelligence becomes abundant.
 
-I built a software/services company into a product business.  
-I care about the practical details: clear ownership, sound governance, and productivity that still respects people.  
-This site is a small home for writing and conversations with serious builders.
+I’m the founder and CEO of [Bluefort](https://www.bluefort.io/), an enterprise software company based in Malta. I started as a developer and have spent my career moving across product, delivery, sales, hiring and company leadership.
+
+I’m now especially interested in how increasingly capable AI changes organisations and institutions: what we should automate, what should remain human, and how accountability, agency and trust survive when systems begin to act rather than simply assist.
 
 {{< cta >}}
-**Contact:** [Email](mailto:edward@borggrech.com) · [LinkedIn](https://www.linkedin.com/in/eborggrech/)
+[About me](/about/) · [Read my writing](/thoughts/) · [Email](mailto:edward@borggrech.com) · [LinkedIn](https://www.linkedin.com/in/eborggrech/)
 {{< /cta >}}
 
-## In brief
+## Builder before commentator
 
-- Built and scaled a software/services company that evolved into a product business
-- Started as a developer, then owned the full loop: delivery, sales, hiring, and leadership
-- Writing about how people and organizations adapt as AI changes the shape of work
+### Building
 
-## Short bio
+I have spent my career building in the real world: software, teams, products and a business serving enterprise customers. At Bluefort, I have worked across the full operating loop from engineering and delivery to commercialisation and leadership.
 
-I’m a builder-operator. I started as a developer, then grew into delivery, sales, hiring, and leadership while building a software/services firm that became a product business. Today I’m focused on how organizations adapt as AI changes the shape of work: redefining roles, decision rights, governance, and the skills people need to stay effective. I’m drawn to the intersection of technology and human systems. I prefer clear writing, small experiments, and teams that keep a high bar without losing empathy.
+### Operating
 
-## What I’m focused on
+Real companies create useful constraints. Customers have expectations. Teams have limits. Decisions have consequences. That experience shapes how I think about technology: less as a collection of demos, and more as a system that has to work reliably around people, incentives and accountability.
 
-- Turning AI capability into reliable workflows 
-- Accountability and decision rights: who owns outcomes, and what “done” means
-- Governance for AI-assisted work: quality bars, review loops, and auditability
-- Role and skill design: what to train, what to hire, what to automate
-- Turning services insight into product (without drifting into custom work)
-- Calm execution: fewer meetings, better writing, tighter feedback loops
-- Comparing notes and collaborating with founders/operators who value substance
+### Looking forward
 
-## How I work
+The next transition is bigger than adding AI to existing workflows. As systems become capable of planning, deciding and acting, we will need new answers about ownership, governance, institutional design and what meaningful human contribution looks like.
 
-- Start with a written problem statement, constraints, and the real decision to be made
-- Prefer small, reversible experiments over big reorganizations
-- Make ownership explicit (one accountable owner per outcome)
-- Use lightweight artifacts: one-pagers, checklists, decision logs, and review cadences
-- Communicate plainly, follow through, and keep the bar high without theatrics
+## What I’m focused on now
 
-## Now
+**Operating.** Continuing to build Bluefort and learn what it takes to create durable enterprise technology businesses.
 
-- Prototyping AI-assisted operating routines (planning, reporting, customer support, internal knowledge)
-- Exploring governance patterns that scale: reviews, escalation paths, and audit trails
-- Thinking about role design as the “unit of work” changes
-- Building a reading list across org design, incentives, and human performance
-- Writing drafts that are meant to be useful, not viral
+**Exploring.** AI-native organisations, autonomous systems, accountability, governance and the new business models that become possible when execution becomes dramatically cheaper.
+
+**Writing.** Technology, company-building, Europe, Malta, human agency and the transition towards a world where intelligence and potentially much else becomes abundant.
+
+## Questions I keep returning to
+
+- What happens to accountability when humans increasingly delegate decisions and actions to AI?
+- How should organisations be redesigned when execution becomes cheap but judgment, trust and responsibility remain scarce?
+- Can Europe turn its institutional strengths into an AI advantage rather than treating regulation as the strategy itself?
+- What can a small country like Malta become when access to intelligence and capability is less constrained by physical scale?
+- How do we preserve human agency, dignity and meaning in a world of increasing technological abundance?
+
+## Selected writing
+
+- [Abundance Will Break the Old Growth Story](/thoughts/abundance-will-break-the-old-growth-story/) on Malta, productivity and what abundance could change.
+- [AI Is Not the Final Judge](/thoughts/ai-is-not-the-final-judge/) on judgment, verification and borrowed certainty.
+- [From Services to Product: Saying No Is a Feature](/thoughts/services-to-product-saying-no/) lessons from turning repeated customer insight into scalable product.
+- [Social Skill Is Intelligence](/thoughts/social-skill-is-intelligence/) on the forms of intelligence markets reward but schools rarely measure.
+
+[See all writing →](/thoughts/)
+
+## About
+
+My background sits at the intersection of technology, business and organisational leadership. I began in software development, then progressively took on delivery, product, sales, hiring and leadership while building Bluefort.
+
+That mix is increasingly the lens I bring to AI: I am interested not only in what the technology can do, but in how it becomes useful, governable and economically meaningful inside real organisations and institutions.
+
+[More about me →](/about/)
 
 ## Principles
 
-- Clarity is kindness.
-- Systems beat heroics.
+- Build before you theorise.
+- Accountability must follow autonomy.
+- Systems should increase human agency.
 - Dignity is a constraint, not a perk.
 
-## Longer bio
+## Let’s compare notes
 
-I’ve spent my career on the builder side of the table: shipping software, solving messy delivery problems, and learning (sometimes the hard way) how organizations actually execute. I started as a developer and gradually took on the full loop-product, delivery, sales, hiring, and leadership; while growing a software/services company into a product business. Building with real customers and real constraints trained my instincts: outcomes matter, ambiguity compounds, and the smallest process changes can either unlock momentum or slowly suffocate it.
-
-What I’m most interested in now is the transition we’re all living through as AI changes the shape of work. The tools are moving fast, but most operating models are not. Teams keep the same roles, meetings, and handoffs, then hope automation will compensate for unclear ownership or fuzzy standards. It won’t. The opportunities (and risks) sit in the interface between people and systems: decision rights, accountability, governance, and how we design work so quality holds when the pace increases.
-
-My default stance is pragmatic: start with the job to be done, write down what “good” looks like, and redesign the workflow before you scale the tooling. I care about productivity, but I also care about human dignity as a design constraint: people should understand what they’re accountable for, have the agency to do it, and feel respected while doing hard work.
-
-I write to think in public and to find the right peers: founders, operators, and executives who want clear language and honest tradeoffs. If that’s you: whether you’re building, investing, or exploring how to modernize an organization, I’m always open to a thoughtful conversation.
-
-## Contact
-
-If you want to compare notes or share a problem you’re working through, email is best. LinkedIn is great for quick introductions.
+I’m particularly interested in conversations with people building AI systems that have to work inside real organisations; researching autonomy, accountability and human agency; operating technology businesses through the next transition; or working seriously on Europe’s AI future.
 
 {{< cta >}}
-**Contact:** [Email](mailto:edward@borggrech.com) · [LinkedIn](https://www.linkedin.com/in/eborggrech/)
+[Email](mailto:edward@borggrech.com) · [LinkedIn](https://www.linkedin.com/in/eborggrech/)
 {{< /cta >}}

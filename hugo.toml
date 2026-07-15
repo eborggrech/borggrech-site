@@ -5,6 +5,8 @@ theme = "PaperMod"
 
 [params]
   author = "Edward Borg Grech"
+  description = "Founder, operator and technologist writing about enterprise AI, accountable autonomy, building technology businesses and Europe's AI transition."
+  keywords = ["Edward Borg Grech", "Bluefort", "enterprise AI", "accountable autonomy", "technology", "Malta", "Europe"]
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
@@ -39,14 +41,19 @@ theme = "PaperMod"
     weight = 1
 
   [[menu.main]]
-    name = "Thoughts"
-    url = "/thoughts/"
+    name = "About"
+    url = "/about/"
     weight = 2
 
   [[menu.main]]
-    name = "Search"
-    url = "/search/"
+    name = "Writing"
+    url = "/thoughts/"
     weight = 3
+
+  [[menu.main]]
+    name = "Now"
+    url = "/now/"
+    weight = 4
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
