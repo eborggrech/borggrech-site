@@ -88,18 +88,21 @@
     }
 
     .forty-shell{
-      width:min(76vw,560px);
-      aspect-ratio:1.2/1;
-      margin:0 auto 18px;
+      width:min(88vw,620px);
+      margin:0 auto 22px;
       display:grid;
       place-items:center;
       position:relative;
     }
 
     .forty-logo{
-      width:100%;
-      height:100%;
+      display:block;
+      width:auto;
+      height:auto;
+      max-width:100%;
+      max-height:68vh;
       object-fit:contain;
+      border-radius:18px;
       filter:drop-shadow(0 24px 44px rgba(0,0,0,.26));
     }
 
@@ -349,14 +352,23 @@
       background:#111;
     }
 
-    .gallery img{
+    .gallery img,
+    .gallery video{
       width:100%;
       height:100%;
       object-fit:cover;
+      display:block;
       transition:transform .25s ease;
     }
 
     .gallery a:hover img{transform:scale(1.025)}
+
+    .gallery-video{
+      aspect-ratio:1/1;
+      border-radius:14px;
+      overflow:hidden;
+      background:#111;
+    }
 
     footer{
       padding:54px 0 66px;
@@ -396,12 +408,21 @@
         Replace "forty-logo.webp" with the final 40 artwork:
         baby Edward inside the 4, present-day Edward inside the 0.
       -->
-      <div class="forty-shell" aria-label="40">
+      <div class="forty-shell" aria-label="Edward's 40th invitation artwork">
         <img
           class="forty-logo"
-          src="forty-logo.webp"
-          alt="40   then and now"
-          onerror="this.style.display='none';document.querySelector('.forty-fallback').style.display='block';"
+          src="invite.webp"
+          alt="Edward's 40th birthday invitation"
+          data-fallback="0"
+          onerror="
+            if (this.dataset.fallback === '0') {
+              this.dataset.fallback = '1';
+              this.src = 'forty-logo.webp';
+            } else {
+              this.style.display='none';
+              document.querySelector('.forty-fallback').style.display='block';
+            }
+          "
         />
         <div class="forty-fallback" aria-hidden="true">40</div>
       </div>
@@ -412,7 +433,7 @@
 
       <div class="actions">
         <a class="btn" href="#rsvp">RSVP</a>
-        <a class="btn secondary" href="#photos">Upload photos</a>
+        <a class="btn secondary" href="#photos">Photos & videos</a>
         <a class="btn secondary" href="#details">Details</a>
       </div>
 
@@ -468,20 +489,20 @@
         <p class="section-kicker">Before · during · after</p>
         <h2 class="section-title">Add your perspective.</h2>
         <p class="section-copy">
-          You don’t need to wait for the party. If you already have a photo or memory
-          worth sharing, add it now — then come back here during or after the evening
-          to add more. No app and no account needed.
+          You don’t need to wait for the party. If you already have a photo, short video
+          or memory worth sharing, add it now — then come back here during or after the
+          evening to add more. No app and no account needed.
         </p>
 
         <div class="photo-panel">
           <h3>Part of the story already?</h3>
           <p>
-            Upload new photos from the evening.
+            Share an old photo or short video now, or upload new ones from the evening.
             They’ll appear in the shared gallery below once uploaded.
           </p>
 
-          <button class="btn" id="uploadButton" type="button">Add photos</button>
-          <input id="photoInput" type="file" accept="image/*" multiple hidden>
+          <button class="btn" id="uploadButton" type="button">Add photos & videos</button>
+          <input id="photoInput" type="file" accept="image/*,video/*" multiple hidden>
           <button class="btn secondary" id="refreshGallery" type="button">Refresh gallery</button>
           <div class="upload-status" id="uploadStatus"></div>
 
@@ -524,15 +545,22 @@
               </div>
 
               <div class="field" id="guestCountField">
-                <label for="guests">Number attending</label>
+                <label for="guests">Total number attending</label>
                 <select id="guests" name="guests">
-                  <option value="1">1</option>
+                  <option value="1">1 — just me</option>
                   <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
                 </select>
+                <div class="form-note">Include yourself, partner and children in the total.</div>
               </div>
 
               <div class="field" id="guestNamesField">
-                <label for="guest_names">Guest name(s), if applicable</label>
+                <label for="guest_names">Who else is coming?</label>
                 <input id="guest_names" name="guest_names" />
               </div>
 
@@ -671,9 +699,9 @@
     });
 
     /*
-      PHOTO UPLOAD
-      Uses Cloudinary's unsigned Upload API directly instead of the modal
-      Upload Widget. This is simpler and avoids iframe/widget-loading issues.
+      PHOTO + VIDEO UPLOAD
+      Uses Cloudinary's unsigned Upload API directly.
+      /auto/upload lets Cloudinary detect image vs video automatically.
     */
     const uploadButton = document.getElementById("uploadButton");
     const photoInput = document.getElementById("photoInput");
@@ -688,7 +716,7 @@
     if (!cloudinaryReady) {
       uploadButton.disabled = true;
       refreshGallery.disabled = true;
-      uploadStatus.textContent = "Photo sharing will open once the gallery is configured.";
+      uploadStatus.textContent = "Photo and video sharing will open once the gallery is configured.";
     }
 
     uploadButton.addEventListener("click", () => {
@@ -709,15 +737,20 @@
 
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
+        const isImage = file.type.startsWith("image/");
+        const isVideo = file.type.startsWith("video/");
 
-        if (!file.type.startsWith("image/")) {
-          failures.push(`${file.name}: not an image`);
+        if (!isImage && !isVideo) {
+          failures.push(`${file.name}: unsupported file type`);
           continue;
         }
 
-        // Keep guest uploads sensible for mobile use.
-        if (file.size > 20 * 1024 * 1024) {
-          failures.push(`${file.name}: larger than 20 MB`);
+        // Sensible guest-upload limits. Cloudinary may impose its own plan limits too.
+        const limit = isVideo ? 100 * 1024 * 1024 : 20 * 1024 * 1024;
+        if (file.size > limit) {
+          failures.push(
+            `${file.name}: larger than ${isVideo ? "100 MB" : "20 MB"}`
+          );
           continue;
         }
 
@@ -731,7 +764,7 @@
 
         try {
           const response = await fetch(
-            `https://api.cloudinary.com/v1_1/${CONFIG.cloudName}/image/upload`,
+            `https://api.cloudinary.com/v1_1/${CONFIG.cloudName}/auto/upload`,
             {
               method: "POST",
               body: formData
@@ -750,10 +783,8 @@
 
           uploaded++;
 
-          // Show the new image immediately, even if the tag-list endpoint
-          // takes a moment to refresh.
           if (data.secure_url) {
-            prependUploadedImage(data.secure_url);
+            prependUploadedAsset(data);
           }
         } catch (err) {
           console.error("Cloudinary upload failed:", err);
@@ -766,7 +797,7 @@
 
       if (uploaded && !failures.length) {
         uploadStatus.textContent =
-          `${uploaded} photo${uploaded === 1 ? "" : "s"} uploaded — thank you.`;
+          `${uploaded} item${uploaded === 1 ? "" : "s"} uploaded — thank you.`;
       } else if (uploaded) {
         uploadStatus.textContent =
           `${uploaded} uploaded. ${failures.length} failed: ${failures.join(" · ")}`;
@@ -775,7 +806,6 @@
           `Upload failed: ${failures.join(" · ") || "Please check the Cloudinary upload preset."}`;
       }
 
-      // Refresh the shared list after Cloudinary has had a moment to update it.
       if (uploaded) {
         setTimeout(loadGallery, 1800);
       }
@@ -783,14 +813,29 @@
 
     refreshGallery.addEventListener("click", loadGallery);
 
-    function prependUploadedImage(url) {
+    function prependUploadedAsset(asset) {
+      if (asset.resource_type === "video") {
+        const wrap = document.createElement("div");
+        wrap.className = "gallery-video";
+
+        const video = document.createElement("video");
+        video.src = asset.secure_url;
+        video.controls = true;
+        video.preload = "metadata";
+        video.playsInline = true;
+
+        wrap.appendChild(video);
+        gallery.prepend(wrap);
+        return;
+      }
+
       const link = document.createElement("a");
-      link.href = url;
+      link.href = asset.secure_url;
       link.target = "_blank";
       link.rel = "noopener";
 
       const img = document.createElement("img");
-      img.src = url;
+      img.src = asset.secure_url;
       img.loading = "lazy";
       img.alt = "Guest photo from Edward's 40th birthday";
 
@@ -798,39 +843,73 @@
       gallery.prepend(link);
     }
 
+    async function fetchResourceList(resourceType) {
+      const url =
+        `https://res.cloudinary.com/${CONFIG.cloudName}/${resourceType}/list/${CONFIG.galleryTag}.json`;
+
+      const response = await fetch(url, { cache: "no-store" });
+
+      if (!response.ok) {
+        throw new Error(`${resourceType} list returned HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      return (data.resources || []).map((asset) => ({
+        ...asset,
+        resource_type: resourceType
+      }));
+    }
+
     async function loadGallery() {
       if (!cloudinaryReady) return;
 
-      const listUrl =
-        `https://res.cloudinary.com/${CONFIG.cloudName}/image/list/${CONFIG.galleryTag}.json`;
-
       try {
-        uploadStatus.textContent = "Loading photos…";
+        uploadStatus.textContent = "Loading photos & videos…";
 
-        const response = await fetch(listUrl, { cache: "no-store" });
+        // Ask Cloudinary separately for tagged images and videos.
+        const results = await Promise.allSettled([
+          fetchResourceList("image"),
+          fetchResourceList("video")
+        ]);
 
-        if (!response.ok) {
-          throw new Error(
-            `Gallery list returned HTTP ${response.status}. ` +
-            `Uploading can still work; Cloudinary Resource List may be restricted.`
-          );
-        }
-
-        const data = await response.json();
-        const resources = (data.resources || [])
-          .slice()
+        const resources = results
+          .filter((r) => r.status === "fulfilled")
+          .flatMap((r) => r.value)
           .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+        const failedLists = results.filter((r) => r.status === "rejected");
 
         gallery.innerHTML = "";
 
         if (!resources.length) {
-          uploadStatus.textContent = "No photos yet. Be the first.";
+          if (failedLists.length === results.length) {
+            throw new Error("Cloudinary Resource List is restricted.");
+          }
+          uploadStatus.textContent = "Nothing shared yet. Be the first.";
           return;
         }
 
         resources.forEach((asset) => {
           const publicId = asset.public_id;
-          const format = asset.format || "jpg";
+          const format = asset.format || (asset.resource_type === "video" ? "mp4" : "jpg");
+
+          if (asset.resource_type === "video") {
+            const wrap = document.createElement("div");
+            wrap.className = "gallery-video";
+
+            const video = document.createElement("video");
+            video.src =
+              `https://res.cloudinary.com/${CONFIG.cloudName}/video/upload/` +
+              `q_auto/${publicId}.${format}`;
+            video.controls = true;
+            video.preload = "metadata";
+            video.playsInline = true;
+
+            wrap.appendChild(video);
+            gallery.appendChild(wrap);
+            return;
+          }
 
           const thumb =
             `https://res.cloudinary.com/${CONFIG.cloudName}/image/upload/` +
@@ -855,11 +934,11 @@
         });
 
         uploadStatus.textContent =
-          `${resources.length} photo${resources.length === 1 ? "" : "s"} shared`;
+          `${resources.length} shared item${resources.length === 1 ? "" : "s"}`;
       } catch (err) {
         console.error("Gallery load failed:", err);
         uploadStatus.textContent =
-          "Photo uploads are available. The shared gallery list is not enabled yet.";
+          "Uploads are available. The shared gallery list is not enabled yet.";
       }
     }
 
